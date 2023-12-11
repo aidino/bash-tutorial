@@ -1,6 +1,6 @@
 # Bash file tutorial
 
-## Chapter 1
+## Chapter 1: Hello world
 
 ### Commands
 - `pwd`: Prints the name of the current working directory
@@ -31,3 +31,14 @@ Dùng để chỉ đường cho trình thông dịch (Interpreter). Ký hiệu n
 - `PWD` contains the pathname of the shell’s current working directory.
 - `HOME` stores the pathname of the user’s home directory.
 - `PATH` is a colon-separated list of directories in which command files are stored. The shell searches the directories for commands it is asked to execute.
+
+## Chapter 2: “Input, Output, and Throughput”
+
+### Parameters and Variables
+
+- A parameter is an entity to store values
+- There are three types of parameters:
+  - `positional parameters`: are aguments present on the command line
+  - `special parameters`: are set by the shell to store infomation about aspects of its current state, such as the number of arguments and the exit code of the last command
+  - `variables`: are identified by a name
+
