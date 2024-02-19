@@ -1,44 +1,52 @@
-# Bash file tutorial
+## Bash for Data Scientists
 
-## Chapter 1: Hello world
+### Useful tools
 
-### Commands
-- `pwd`: Prints the name of the current working directory
-- `cd`: Changes the shell’s working directory
-- `echo`: Prints its arguments separated by a space and terminated by
-a newline
-- `type`: Displays information about a command
-- `mkdir`: Creates a new directory
-- `chmod`: Modifies the permissions of a file
-- `source`: a.k.a. .(dot), executes a script in the current shell
-environment
-- `printf`: Prints the arguments as specified by a format string
+- **cowsay**
 
-### Concepts
-- `Script`: A file containing commands to be executed by the shell.
-- `Word`: A word is a sequence of characters considered to be a single
-unit by the shell.
-- `Output redirection`: The output of a command can be sent to a file
-rather than the terminal using `> FILENAME`.
-- `Variables`: These are the names where values are stored
-- `Comments`: These consist of an unquoted word beginning with a #.
-All remaining characters on that line constitute a comment and will
-be ignored.
-- `Shebang` or `hash-bang`: This is a hash and an exclamation mark (#!)
-Dùng để chỉ đường cho trình thông dịch (Interpreter). Ký hiệu này giúp hệ điều hành biết cách thực thi mã nguồn mà không cần phải gõ trực tiếp vào dòng lệnh.
+```
+# For macos
+brew install cowsay
 
-### Variable
-- `PWD` contains the pathname of the shell’s current working directory.
-- `HOME` stores the pathname of the user’s home directory.
-- `PATH` is a colon-separated list of directories in which command files are stored. The shell searches the directories for commands it is asked to execute.
+# For linux
+sudo apt install cowsay
+```
 
-## Chapter 2: “Input, Output, and Throughput”
+- **csvkit**
 
-### Parameters and Variables
+```
+sudo apt-get install python-dev python-pip python-setuptools build-essential
+pip install --upgrade setuptools
+pip install --upgrade csvkit
+```
 
-- A parameter is an entity to store values
-- There are three types of parameters:
-  - `positional parameters`: are aguments present on the command line
-  - `special parameters`: are set by the shell to store infomation about aspects of its current state, such as the number of arguments and the exit code of the last command
-  - `variables`: are identified by a name
+### Useful commands
 
+`csvgrep tmnt-with-header.csv --column=name --regex '^Leonardo' | csvlook -I`
+
+| name     | nickname | mask_color | weapon        |
+| -------- | -------- | ---------- | ------------- |
+| Leonardo | Leo      | blue       | two ninjakens |
+
+
+tìm trong file `tmnt-with-header.csv`, column `name` tìm tên `Leonardo`
+
+
+`in2csv --names top2000.xlsx` : lấy sheet trong file top2000.xlsx
+
+```bash
+curl -sL "https://www.gutenberg.org/files/11/11-0.txt" | ➊
+> tr '[:upper:]' '[:lower:]' | ➋
+> grep -oE "[a-z\']{2,}" | ➌
+> sort | ➍
+> uniq -c | ➎
+> sort -nr | ➏
+> head -n 10 ➐
+```
+➊ Downloading an ebook using curl.
+➋ Converting the entire text to lowercase using tr47.
+➌ Extracting all the words using grep48 and put each word on separate line.
+➍ Sort these words in alphabetical order using sort49.
+➎ Remove all the duplicates and count how often each word appears in the list using uniq50.
+➏ Sort this list of unique words by their count in descending order using sort.
+➐ Keep only the top 10 lines (i.e., words) using head
